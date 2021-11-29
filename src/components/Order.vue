@@ -14,7 +14,7 @@
             <h1 class="title">Связаться с нами</h1>
             <ul>
               <li class="subtitle">+998 (99) 919 93 39</li>
-              <li class="subtitle">+998 (94) 626 00 18</li>
+              <li class="subtitle">+998 (99) 890 76 41</li>
               <li class="subtitle">+998 (99) 391 66 60</li>
             </ul>
           </div>

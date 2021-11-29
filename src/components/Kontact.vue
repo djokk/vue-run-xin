@@ -24,7 +24,7 @@
             <i class="fa fa-map-marker fa-absolute" aria-hidden="true"></i>
             <p class="info__title">Адрес</p>
             <span class="info__subtitle"
-              >Toshkent shaxar, Yangi Sergeli ko'chasi, 130</span
+              >г. Ташкент, улица Янгли Сергели, 130</span
             >
           </div>
           <div class="info__item">

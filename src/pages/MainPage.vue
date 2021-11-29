@@ -40,8 +40,6 @@ export default {
     loadProductEquipment() {
       axios
         .get(
-          // "https://605c39616d85de00170d991b.mockapi.io/api/v1/products"
-          // "http://localhost:8080/static/products.json"
           "../static/products.json"
         )
         .then((response) => {
@@ -52,37 +50,32 @@ export default {
           }
         });
     },
-    //   let step1 = response.data[0].items.length - 1;
-    //   // console.log(step1);
-    //   for (var i = 0; i < 8; i++) {
-    //     // let productData = ;
-    //     let step2 = Math.floor(Math.random() * (step1 - 0) + 0);
-    //     this.equipmentData.push(response.data[0].items[step2]);
-    //   }
-    //   // console.log(response.data);
-    // });
-    // },
-    //   // this.productData.find((elem) => {
-    //   //   elem.items.find((prod) => {
-    //   //     if (prod.id == +this.$route.params.id) {
-    //   //       this.equipmentData = prod;
-    //   //       // return this.productData;
-    //   //     }
-    //   //   });
-    //   // });
-    //   // });
-    // },
   },
   created() {
     this.loadProductEquipment();
   },
-  // watch: {
-  //   "$route.params.id": {
-  //     handler() {
-  //       this.loadProductEquipment();
-  //     },
-  //     inmediate: true,
-  //   },
-  // },
+  metaInfo() {
+    return {
+      title: "Run Xin",
+      meta: [
+        {
+          vmid: "description",
+          property: "description",
+          content: "Run Xin Machinery Co.Ltd (ООО Рун Хин) является крупномасштабным ведущим предприятием по разработке, изготовлению и продаже крупного дробильного и измельчительного оборудования",
+        },
+        { vmid: "og:title", property: "og:title", content: "Главный" },
+        {
+          vmid: "og:description",
+          property: "og:description",
+          content: "Компания RunXin занимается на производстве исследование оборудование автоматизации для нового стенного материала уже 20 лет",
+        },
+        {
+          vmid: "og:image:url",
+          property: "og:image:url",
+          content: "https://run-xin.uz/img/logo.png",
+        },
+      ],
+    };
+  },
 };
 </script>

@@ -1,23 +1,15 @@
 <template>
-  <a href="#header" id="top" @click="scrollTo" @scroll="scrollHt">
+  <a href="#app" id="top" @click="scrollTo" @scroll="scrollHt">
     <i class="fa fa-arrow-up" aria-hidden="true"></i>
   </a>
 </template>
 
 <script>
-// import smoothscroll from "smoothscroll-polyfill";
 import SmoothScroll from "smooth-scroll";
 
 export default {
   methods: {
     scrollTo() {
-      // smoothscroll.polyfill();
-      // window.__forceSmoothScrollPolyfill__ = true;
-      // window.scroll({
-      //   left: 0,
-      //   top: 0,
-      //   behavior: "smooth",
-      // });
       SmoothScroll('a[href*="#"]', {
         speed: 600,
         speedAsDuration: true,

@@ -34,6 +34,10 @@ const routes = [
     component: NotFound,
     path: '*',
   },
+  {
+    name: 'mainUz',
+    path: '/uz',
+  },
 ]
 
 const router = new VueRouter({

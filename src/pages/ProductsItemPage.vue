@@ -114,20 +114,6 @@
   </div>
 </template>
 
-<style>
-.productLoading {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  position: absolute;
-}
-</style>
-
 <script>
 import Kontact from "@/components/Kontact.vue";
 import Recommend from "@/components/Recommend.vue";
@@ -187,10 +173,10 @@ export default {
   },
   methods: {
     gotoPage,
-    loadProduct() {
+    async loadProduct() {
       this.productLoading = true;
       this.productLoadingFailed = false;
-      axios
+      await axios
         .get("../static/products.json")
         .then((response) => {
           this.productData = response.data;
@@ -205,24 +191,32 @@ export default {
         .catch(() => (this.productLoadingFailed = true))
         .then(() => (this.productLoading = false));
     },
-    loadProductsRecomemend() {
-      axios
+    async loadProductsRecomemend() {
+      await axios
         .get("../static/products.json")
         .then((response) => {
           this.recommendData = [];
           let step1 = response.data[0].items;
           // this.recommendData.push(elem);
           for (let i = 0; i < 4; i++) {
-            const n = Math.floor(Math.random() * step1.length);
-            if (step1.id !== this.productData.id) {
+            let n = Math.round(Math.random() * step1.length);
+            if (n !== this.productData.id) {
+              console.log(n !== this.productData.id);
               this.recommendData.push(step1.splice(n, 1)[0]);
+            }
+            else {
+              console.log('asd');
+              let t = Math.round(Math.random() * step1.length);
+              if (t !== this.productData.id){
+                this.recommendData.push(step1.splice(t, 1)[0]);
+              }
             }
           }
         })
         .catch((error) => console.log(error));
     },
-    loadCategory() {
-      axios
+    async loadCategory() {
+      await axios
         .get("../static/products.json")
         .then((response) => {
           this.categoriesData = response.data;
@@ -250,6 +244,29 @@ export default {
       },
       inmediate: true,
     },
+  },
+  metaInfo() {
+    return {
+      title: "Run Xin | " + this.productData.title,
+      meta: [
+        {
+          vmid: "description",
+          property: "description",
+          content: this.productData.undertitle,
+        },
+        { vmid: "og:title", property: "og:title", content: this.productData.title },
+        {
+          vmid: "og:description",
+          property: "og:description",
+          content: this.productData.undertitle,
+        },
+        {
+          vmid: "og:image:url",
+          property: "og:image:url",
+          content: "https://run-xin.uz" + this.productData.ogImageUrl,
+        },
+      ],
+    };
   },
 };
 </script>

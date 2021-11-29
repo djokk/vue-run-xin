@@ -9,7 +9,6 @@
           <div class="row justify-content-between">
             <ProductFilter :category-id.sync="filterCategoryId" />
             <div class="col-xl-8 col-lg-8">
-              <!-- <ProductList :products="filteredProducts" /> -->
               <ProductList :products="pageOfItems" />
               <div class="pagination d-flex justify-content-center flex-wrap">
                 <jw-pagination
@@ -21,11 +20,6 @@
                   :labels="customLabels"
                 ></jw-pagination>
               </div>
-              <!-- <BasePagination
-                v-model="page"
-                :count="countProducts"
-                :perPage="productsPerPage"
-              /> -->
             </div>
           </div>
         </div>
@@ -65,7 +59,6 @@ export default {
     Rectangle,
     ProductFilter,
     ProductList,
-    // BasePagination,
   },
   computed: {
     filteredProducts() {
@@ -76,13 +69,6 @@ export default {
         );
       }
       return filteredProducts;
-
-      // if (this.filterCategoryId) {
-      //   filteredProducts = filteredProducts.filter(
-      //     (product) => product.categoryId === this.filterCategoryId
-      //   );
-      // }
-      // return filteredProducts;
     },
     products() {
       return this.productData ? this.productData[0].items : [];
@@ -91,16 +77,11 @@ export default {
   methods: {
     loadProducts() {
       axios
-        .get(
-          // `https://605c39616d85de00170d991b.mockapi.io/api/v1/products?page=${this.page}&limit=${this.productsPerPage}`
-          "../static/products.json"
-        )
+        .get("../static/products.json")
         .then((response) => (this.productData = response.data))
         .catch((error) => console.log(error));
     },
     onChangePage(pageOfItems) {
-      // console.log(pageOfItems);
-      // update page of items
       this.pageOfItems = pageOfItems;
     },
   },
@@ -114,6 +95,29 @@ export default {
   },
   created() {
     this.loadProducts();
+  },
+  metaInfo() {
+    return {
+      title: "Run Xin | Оборудование",
+      meta: [
+        {
+          vmid: "description",
+          property: "description",
+          content: "Run Xin Machinery Co.Ltd (ООО Рун Хин) является крупномасштабным ведущим предприятием по разработке, изготовлению и продаже крупного дробильного и измельчительного оборудования",
+        },
+        { vmid: "og:title", property: "og:title", content: "Оборудование" },
+        {
+          vmid: "og:description",
+          property: "og:description",
+          content: "Run Xin Machinery Co.Ltd (ООО Рун Хин) является крупномасштабным ведущим предприятием по разработке, изготовлению и продаже крупного дробильного и измельчительного оборудования",
+        },
+        {
+          vmid: "og:image:url",
+          property: "og:image:url",
+          content: "",
+        },
+      ],
+    };
   },
 };
 </script>

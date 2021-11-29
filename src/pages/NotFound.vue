@@ -195,3 +195,31 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  metaInfo() {
+    return {
+      title: "Run Xin | 404",
+      meta: [
+        {
+          vmid: "description",
+          property: "description",
+          content: "Run Xin Machinery Co.Ltd (ООО Рун Хин) является крупномасштабным ведущим предприятием по разработке, изготовлению и продаже крупного дробильного и измельчительного оборудования",
+        },
+        { vmid: "og:title", property: "og:title", content: "404" },
+        {
+          vmid: "og:description",
+          property: "og:description",
+          content: "Run Xin Machinery Co.Ltd (ООО Рун Хин) является крупномасштабным ведущим предприятием по разработке, изготовлению и продаже крупного дробильного и измельчительного оборудования",
+        },
+        {
+          vmid: "og:image:url",
+          property: "og:image:url",
+          content: "",
+        },
+      ],
+    };
+  },
+}
+</script>
